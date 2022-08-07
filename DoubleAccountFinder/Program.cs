@@ -16,12 +16,31 @@ namespace DoubleAccountFinder
 				.ToHashSet()
 			;
 
+		private static int ProcessReturn(int code, bool autoClose)
+		{
+			if (!autoClose)
+			{
+				Console.WriteLine("Нажмите ENTER для выхода");
+				Console.Read();
+			}
+
+			return code;
+		}
+
 		static int Main(string[] args)
 		{
+			var configuration = new ConfigurationBuilder()
+				.AddIniFile("config.ini")
+				.AddCommandLine(args)
+				.Build()
+			;
+
+			var options = configuration.GetSection("Main").Get<Options>();
+
 			if (!args.Any())
 			{
 				Console.Error.WriteLine("Не указаны файлы для обработки");
-				return 1;
+				return ProcessReturn(1, options.AutoCloseOnError);
 			}
 
 			var sources = args
@@ -32,16 +51,8 @@ namespace DoubleAccountFinder
 			if (!files.Any())
 			{
 				Console.Error.WriteLine("Указанные файлы недоступны или не в том формате");
-				return 2;
+				return ProcessReturn(2, options.AutoCloseOnError);
 			}
-
-			var configuration = new ConfigurationBuilder()
-				.AddIniFile("config.ini")
-				.AddCommandLine(args)
-				.Build()
-			;
-
-			var options = configuration.GetSection("Main").Get<Options>();
 
 			try
 			{
@@ -51,13 +62,7 @@ namespace DoubleAccountFinder
 			catch (Exception ex)
 			{
 				Console.Error.WriteLine(ex.Message);
-				if (!options.AutoCloseOnError)
-				{
-					Console.WriteLine("Нажмите ENTER для закрытия");
-					Console.Read();
-				}
-
-				return 1;
+				return ProcessReturn(3, options.AutoCloseOnError);
 			}
 
 			return 0;
