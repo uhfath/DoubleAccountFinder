@@ -40,6 +40,7 @@ namespace DoubleAccountFinder
 
 			var configuration = new ConfigurationBuilder()
 				.AddIniFile("config.ini")
+				.AddCommandLine(args)
 				.Build()
 			;
 

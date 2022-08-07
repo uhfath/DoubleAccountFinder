@@ -2,7 +2,7 @@
   "profiles": {
     "DoubleAccountFinder": {
       "commandName": "Project",
-      "commandLineArgs": "\"E:\\Desktop\\Новая папка (5)\\Реестр направленных уведомлений физ лица (акт приема передачи) январь 2022 (3).xlsx\""
+      "commandLineArgs": "\"Main:Source=E:\\Desktop\\Новая папка (5)\\Итоги в разрезе.xlsx\" \"E:\\Desktop\\Новая папка (5)\\Реестр направленных уведомлений физ лица (акт приема передачи) январь 2022 (3).xlsx\""
     }
   }
 }
