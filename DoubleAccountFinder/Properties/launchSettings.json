@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "DoubleAccountFinder": {
+      "commandName": "Project",
+      "commandLineArgs": "\"E:\\Desktop\\Новая папка (5)\\Реестр направленных уведомлений физ лица (акт приема передачи) январь 2022 (3).xlsx\""
+    }
+  }
+}

@@ -9,7 +9,21 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="publish\**" />
+	  <EmbeddedResource Remove="publish\**" />
+	  <None Remove="publish\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="EPPlus" Version="6.0.6" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Ini" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="config.ini">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup>
 
 </Project>
