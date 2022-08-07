@@ -42,9 +42,25 @@ namespace DoubleAccountFinder
 			;
 
 			var options = configuration.GetSection("Main").Get<Options>();
-			var processor = new Processor(files, options);
 
-			return processor.Process();
+			try
+			{
+				var processor = new Processor(files, options);
+				processor.Process();
+			}
+			catch (Exception ex)
+			{
+				Console.Error.WriteLine(ex.Message);
+				if (!options.AutoCloseOnError)
+				{
+					Console.WriteLine("Нажмите ENTER для закрытия");
+					Console.Read();
+				}
+
+				return 1;
+			}
+
+			return 0;
 		}
 	}
 }

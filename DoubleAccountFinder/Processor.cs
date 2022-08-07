@@ -105,7 +105,7 @@ namespace DoubleAccountFinder
 			_accountRegex = new Regex(options.AccountRegex, RegexOptions.Compiled);
 		}
 
-		public int Process()
+		public void Process()
 		{
 			var sourceData = GetSourceData(_configOptions.Source);
 			Console.WriteLine("Исходных счетов: {0}", sourceData.Count);
@@ -116,7 +116,7 @@ namespace DoubleAccountFinder
 				CompareFile(file, sourceData);
 			}
 
-			return 0;
+			Console.WriteLine("Обработка завершена");
 		}
 
 		private record SourceLine(string Worksheet, int Line, string Account, string Amount);

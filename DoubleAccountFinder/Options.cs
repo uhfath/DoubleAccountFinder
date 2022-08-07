@@ -13,5 +13,6 @@ namespace DoubleAccountFinder
 		public string AccountRegex { get; set; }
 		public string Source { get; set; }
 		public string CreateNewSuffix { get; set; }
+		public bool AutoCloseOnError { get; set; }
 	}
 }
