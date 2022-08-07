@@ -11,12 +11,17 @@
 	
 	<PropertyGroup>
 		<DebugType>embedded</DebugType>
+		<ApplicationIcon>main.ico</ApplicationIcon>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<Compile Remove="publish\**" />
 		<EmbeddedResource Remove="publish\**" />
 		<None Remove="publish\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="main.ico" />
 	</ItemGroup>
 
 	<ItemGroup>
