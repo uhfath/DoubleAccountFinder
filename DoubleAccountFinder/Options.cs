@@ -12,5 +12,6 @@ namespace DoubleAccountFinder
 		public int AmountColumn { get; set; }
 		public string AccountRegex { get; set; }
 		public string Source { get; set; }
+		public string CreateNewSuffix { get; set; }
 	}
 }

@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Configuration;
-using OfficeOpenXml;
 
 namespace DoubleAccountFinder
 {
@@ -19,8 +18,6 @@ namespace DoubleAccountFinder
 
 		static int Main(string[] args)
 		{
-			ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-
 			if (!args.Any())
 			{
 				Console.Error.WriteLine("Не указаны файлы для обработки");
@@ -44,9 +41,10 @@ namespace DoubleAccountFinder
 				.Build()
 			;
 
-			var config = configuration.GetSection("Main").Get<Options>();
+			var options = configuration.GetSection("Main").Get<Options>();
+			var processor = new Processor(files, options);
 
-			return 0;
+			return processor.Process();
 		}
 	}
 }
